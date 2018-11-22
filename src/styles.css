@@ -1,1 +1,83 @@
 /* You can add global styles to this file, and also import other style files */
+
+body{
+    font:caption;
+}
+
+img{
+    cursor: pointer;
+}
+
+.responsive-container{
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+}
+
+.responsive-iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.player{
+    text-align: center;
+    position: relative;
+    min-height: 125px;
+    margin: -15px 0px 0px 0px;
+    padding: 10px 140px;
+    overflow: hidden;
+}
+
+.play-previous{
+    width: 10vw;
+    float:left;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.play-next{
+    width: 10vw;
+    float: right;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.video{
+    width:200px;
+    /* float: left; */
+    border: 1px solid #ccc;
+}
+
+.video-title{
+    padding: 2px;
+    text-align: center;
+}
+
+.playlist{
+    /* width: auto; */
+    overflow-x: auto;
+    padding: 2px 2px 7px 2px;
+    display: flex;
+    max-width: 100vw;
+}
+
+.playlist > .video {
+    flex: 1; /*grow*/
+}
+
+.text-center{
+    text-align: center;
+}
+
+.footer{
+    padding:15px;
+}
+
+
+
