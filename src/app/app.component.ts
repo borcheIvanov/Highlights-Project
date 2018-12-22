@@ -11,9 +11,11 @@ import { Video } from './video.interface';
 })
 export class AppComponent implements OnInit{
   
+  currentYear : number;
   videos : any = [];
 
   currentVideo : Video = {
+    id: 0,
     url: '',
     title: 'NBA Where amazing happens',
     description: 'Choose a video from the highlight playlist to start watching',
@@ -28,7 +30,15 @@ export class AppComponent implements OnInit{
 
   ngOnInit(){
     this.getVideos();
+    this.getCurrentYear();
   }
+  
+  getCurrentYear(): void {
+    let year:number = (new Date()).getFullYear();
+    this.currentYear = year;
+  }
+
+
 
   filterVideos(){
     console.log("filtering videos");
@@ -50,9 +60,10 @@ export class AppComponent implements OnInit{
                                       (err) => console.log(err));
   }
 
-  playVideo(url, title, desc, i){
+  playVideo(videoId:number, title:string, desc:string, i:number){
     this.currentVideo = {
-      url: 'https://www.youtube.com/embed/' + url + '?autoplay=1',
+      id: videoId,
+      url: 'https://www.youtube.com/embed/' + videoId + '?autoplay=1',
       title: title,
       description: desc,
       index: i
