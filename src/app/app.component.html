@@ -18,18 +18,25 @@
 <div class="container-fluid">
   <div class="row player">
     <div class="col-2 text-center play-button" (click)="playPrevious()">
-      <span style="font-size: 4rem; vertical-align: middle;">
+      <span style="font-size: 4vw; vertical-align: middle;">
         <span style="color: white;">
           <i class="fas fa-backward"></i>
         </span>
       </span>
     </div>
     <div class="col-8 text-center">
-      <h2>{{currentVideo.title}}</h2>
-      <p>{{currentVideo.description}}</p>
+      <p>
+        <span style="font-size: 2.5vw">
+          <strong>{{currentVideo.title}}</strong>
+        </span>
+        <br>
+        <span style="font-size: 1.5vw">
+          {{currentVideo.description}}
+        </span>
+      </p>
     </div>
     <div class="col-2 text-center play-button" (click)="playNext()">
-      <span style="font-size: 4rem;">
+      <span style="font-size: 4vw;">
         <span style="color: white;">
           <i class="fas fa-forward"></i>
         </span>
@@ -48,5 +55,5 @@
 </div>
 
 <div class="footer text-center">
-  {{currentYear}} - v1.0.1
+  {{currentYear}} - v1.0.2
 </div>
