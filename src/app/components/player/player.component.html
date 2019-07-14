@@ -1,0 +1,28 @@
+<div class="responsive-container">
+  <!-- <iframe
+    *ngIf="!isVideoSelected()"
+    class="responsive-iframe"
+    src="https://www.youtube.com/embed/h7DNbhkGmxQ?autoplay=1"
+    width="100%"
+    height="auto"
+    frameborder="0"
+    webkitallowfullscreen
+    mozallowfullscreen
+    allowfullscreen
+  >
+  </iframe> -->
+  <iframe
+    *ngIf="isVideoSelected()"
+    class="responsive-iframe"
+    [src]="
+      currentVideo: sanitizer.bypassSecurityTrustResourceUrl(currentVideo.url) : https: //www.youtube.com/embed/h7DNbhkGmxQ?autoplay=1
+    "
+    width="100%"
+    height="auto"
+    frameborder="0"
+    webkitallowfullscreen
+    mozallowfullscreen
+    allowfullscreen
+  >
+  </iframe>
+</div>
