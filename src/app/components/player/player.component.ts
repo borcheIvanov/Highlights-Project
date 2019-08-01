@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Video } from 'src/app/models/video.interface';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-player',
@@ -15,7 +16,7 @@ export class PlayerComponent implements OnInit {
     index: -1
   };
 
-  constructor() {}
+  constructor(public sanitizer: DomSanitizer) {}
 
   ngOnInit() {}
 }

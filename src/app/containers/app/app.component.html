@@ -6,55 +6,6 @@
 </div>
 
 <app-player [currentVideo]="currentVideo"></app-player>
-
-<!-- Player -->
-<div class="container-fluid">
-  <div class="row player">
-    <div class="col-2 text-center play-button" (click)="playPrevious()">
-      <span style="font-size: 4vw; vertical-align: middle;">
-        <span style="color: white;">
-          <i class="fas fa-backward"></i>
-        </span>
-      </span>
-    </div>
-    <div class="col-8 text-center">
-      <p>
-        <span style="font-size: 2.5vw">
-          <strong>{{ currentVideo.title }}</strong>
-        </span>
-        <br />
-        <span style="font-size: 1.5vw">
-          {{ currentVideo.description }}
-        </span>
-      </p>
-    </div>
-    <div class="col-2 text-center play-button" (click)="playNext()">
-      <span style="font-size: 4vw;">
-        <span style="color: white;">
-          <i class="fas fa-forward"></i>
-        </span>
-      </span>
-    </div>
-  </div>
-</div>
-
-<div class="playlist">
-  <div
-    class="video"
-    [ngClass]="{ playingVideo: video.id.videoId === currentVideo.id }"
-    *ngFor="let video of videos; let i = index"
-    (click)="playVideo(video.id.videoId, video.snippet.title, video.snippet.description, i)"
-  >
-    <div>
-      <img
-        src="{{ video.snippet.thumbnails.default.url }}"
-        alt="YouTube.com"
-        width="199"
-        height="130"
-      />
-    </div>
-    <div class="video-title">{{ video.snippet.title }}</div>
-  </div>
-</div>
+<app-playlist [videos]="videos" (videoPlaying)="playVideo($event)"></app-playlist>
 
 <div class="footer text-center">{{ currentYear }} - v1.0.2</div>
