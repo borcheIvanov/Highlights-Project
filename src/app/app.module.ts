@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './containers/app/app.component';
-import { VideosService } from './Services/videos.service';
+import { VideosService } from './services/videos.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import * as fromContainers from './containers';
