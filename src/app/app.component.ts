@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VideosService } from './Services/videos.service';
+import { VideosService } from './services/videos.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Video } from './video.interface';
 
@@ -10,7 +10,7 @@ import { Video } from './video.interface';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  
+
   currentYear : number;
   videos : any = [];
 
@@ -25,14 +25,14 @@ export class AppComponent implements OnInit{
 
 
   constructor(private _videos:VideosService, public sanitizer: DomSanitizer) {
-    
+
   }
 
   ngOnInit(){
     this.getVideos();
     this.getCurrentYear();
   }
-  
+
   getCurrentYear(): void {
     let year:number = (new Date()).getFullYear();
     this.currentYear = year;
@@ -68,7 +68,7 @@ export class AppComponent implements OnInit{
       description: desc,
       index: i
     } as Video;
-    
+
     console.log(this.currentVideo);
   }
 
