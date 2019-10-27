@@ -31,17 +31,12 @@
 <div class="playlist">
   <div
     class="video"
-    [ngClass]="{ playingVideo: video.id.videoId === currentVideo.id }"
+    [ngClass]="{ playingVideo: video.id.videoId === videoPlaying.id }"
     *ngFor="let video of videos; let i = index"
     (click)="playVideo(video.id.videoId, video.snippet.title, video.snippet.description, i)"
   >
     <div>
-      <img
-        src="{{ video.snippet.thumbnails.default.url }}"
-        alt="YouTube.com"
-        width="199"
-        height="130"
-      />
+      <img src="{{ video.snippet.thumbnails.default.url }}" alt="YouTube.com" width="199" height="130" />
     </div>
     <div class="video-title">{{ video.snippet.title }}</div>
   </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VideosService } from '../../Services/videos.service';
+import { VideosService } from '../../services/videos.service';
 import { Video } from '../../models/video.interface';
 
 @Component({

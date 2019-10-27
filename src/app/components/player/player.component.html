@@ -4,7 +4,7 @@
     [src]="
       currentVideo
         ? sanitizer.bypassSecurityTrustResourceUrl(currentVideo.url)
-        : 'https: //www.youtube.com/embed/h7DNbhkGmxQ?autoplay=1'
+        : sanitizer.bypassSecurityTrustResourceUrl('https: //www.youtube.com/embed/h7DNbhkGmxQ?autoplay=1')
     "
     width="100%"
     height="auto"

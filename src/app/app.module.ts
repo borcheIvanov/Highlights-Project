@@ -1,13 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { HttpClientModule } from "@angular/common/http";
 
-import { AppComponent } from './containers/app/app.component';
-import { VideosService } from './services/videos.service';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { VideosService } from "./services/videos.service";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
-import * as fromContainers from './containers';
-import * as fromComponents from './components';
+import * as fromContainers from "./containers";
+import * as fromComponents from "./components";
+import { AppComponent } from "./containers";
 
 @NgModule({
   declarations: [...fromContainers.containers, ...fromComponents.components],
