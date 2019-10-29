@@ -1,42 +1,31 @@
-<div class="container-fluid">
-  <div class="row player">
-    <div class="col-2 text-center play-button" (click)="playPrevious()">
-      <span style="font-size: 4vw; vertical-align: middle;">
-        <span style="color: white;">
-          <i class="fas fa-backward"></i>
-        </span>
-      </span>
+<div class="container-fluid mt-1">
+  <div class="row">
+    <div class="col-2 play-button d-flex" (click)="playPrevious()">
+      <i class="fas fa-backward m-auto"></i>
     </div>
     <div class="col-8 text-center">
-      <p>
-        <span>
-          <strong>{{ title }}</strong>
-        </span>
-        <br />
-        <span>
-          {{ description }}
-        </span>
+      <p class="pt-3">
+        <strong>{{ title }}</strong>
       </p>
     </div>
-    <div class="col-2 text-center play-button" (click)="playNext()">
-      <span style="font-size: 4vw;">
-        <span style="color: white;">
-          <i class="fas fa-forward"></i>
-        </span>
-      </span>
+    <div class="col-2 play-button d-flex" (click)="playNext()">
+      <i class="fas fa-forward m-auto"></i>
     </div>
+  </div>
+  <div class="p-3 text-center">
+    {{ description }}
   </div>
 </div>
 
 <div class="playlist">
   <div
     class="video"
-    [ngClass]="{ playingVideo: video.id.videoId === videoPlaying.id }"
     *ngFor="let video of videos; let i = index"
+    [ngClass]="{ playingVideo: i === videoIndex }"
     (click)="playVideo(video.id.videoId, video.snippet.title, video.snippet.description, i)"
   >
     <div>
-      <img src="{{ video.snippet.thumbnails.default.url }}" alt="YouTube.com" width="199" height="130" />
+      <img [src]="video.snippet.thumbnails.default.url" alt="YouTube.com" width="199" height="130" />
     </div>
     <div class="video-title">{{ video.snippet.title }}</div>
   </div>

@@ -1,14 +1,5 @@
-body {
-  font: caption;
-}
-
-img {
-  cursor: pointer;
-}
-
 .video {
   width: 200px;
-  /* float: left; */
   border: 1px solid #ccc;
 }
 
@@ -17,18 +8,11 @@ img {
   filter: opacity(50%);
 }
 
-.video-title {
-  padding: 2px;
-  text-align: center;
-}
-
-.player {
-  margin-top: 2px;
-}
-
 .play-button {
+  font-size: 2rem;
   background-color: red;
-  border-radius: 5%;
+  border-radius: 7%;
+  color: white;
 }
 
 .playlist {
@@ -41,8 +25,4 @@ img {
 
 .playlist > .video {
   flex: 1; /*grow*/
-}
-
-.footer {
-  padding: 15px;
 }
