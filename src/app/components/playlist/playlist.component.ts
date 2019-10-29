@@ -20,18 +20,15 @@ export class PlaylistComponent implements OnInit {
   ngOnInit() {}
 
   playNext() {
-    const nextVideoIndex = this.videoIndex + 1;
+    this.videoIndex++;
+    const nextVideoIndex = this.videoIndex;
     const nextVideo = this.videos[nextVideoIndex];
-    this.playVideo(
-      nextVideo.id.videoId,
-      nextVideo.snippet.title,
-      nextVideo.snippet.description,
-      nextVideoIndex
-    );
+    this.playVideo(nextVideo.id.videoId, nextVideo.snippet.title, nextVideo.snippet.description, nextVideoIndex);
   }
 
   playPrevious() {
-    const previousVideoIndex = this.videoIndex - 1;
+    this.videoIndex--;
+    const previousVideoIndex = this.videoIndex;
     const previousVideo = this.videos[previousVideoIndex];
     this.playVideo(
       previousVideo.id.videoId,
