@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/067b3690-7624-4347-b2d4-097729c15d81/resourceGroups/nbahighlights/providers/Microsoft.Web/sites/nbahighlights",
+    "appService.deploySubpath": "dist/HighlightsProj"
+}
