@@ -1,11 +1,7 @@
 <div class="responsive-container">
   <iframe
     class="responsive-iframe"
-    [src]="
-      currentVideo
-        ? sanitizer.bypassSecurityTrustResourceUrl(currentVideo.url)
-        : sanitizer.bypassSecurityTrustResourceUrl('https: //www.youtube.com/embed/h7DNbhkGmxQ?autoplay=1')
-    "
+    [src]="url"
     width="100%"
     height="auto"
     frameborder="0"
