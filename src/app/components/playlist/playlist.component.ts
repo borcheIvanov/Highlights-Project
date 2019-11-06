@@ -41,6 +41,7 @@ export class PlaylistComponent implements OnInit {
   playVideo(videoId: number, title: string, desc: string, i: number) {
     this.title = title;
     this.description = desc;
+    this.videoIndex = i;
 
     this.videoPlaying.emit({
       id: videoId,
