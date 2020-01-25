@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/HighlightsProj",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -34,6 +35,12 @@
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -128,5 +135,8 @@
       }
     }
   },
-  "defaultProject": "HighlightsProj"
+  "defaultProject": "HighlightsProj",
+  "cli": {
+    "analytics": "fed162e3-20a0-463e-a211-60148e1796ca"
+  }
 }
