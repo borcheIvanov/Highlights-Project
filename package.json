@@ -24,7 +24,7 @@
     "@ng-bootstrap/schematics": "^2.0.0-alpha.1",
     "bootstrap": "^4.3.1",
     "core-js": "^3.3.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "npm": "^6.13.6",
     "prettier": "^1.18.2",
     "rxjs": "~6.5.4",
