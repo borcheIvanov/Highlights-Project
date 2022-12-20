@@ -5,7 +5,6 @@
   </h1>
 </div>
 
-<app-player [video]="currentVideo"></app-player>
-<app-playlist [videos]="videos" (videoPlaying)="playVideo($event)"></app-playlist>
+<router-outlet></router-outlet>
 
 <div class="py-3 text-center">{{ currentYear }} - v1.0.5</div>
