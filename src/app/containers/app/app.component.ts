@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { VideosService } from '../../services/videos.service';
-import { Video } from '../../models/video.interface';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,44 +7,16 @@ import { Video } from '../../models/video.interface';
 })
 export class AppComponent implements OnInit {
   currentYear: number;
-  videos: any = [];
 
-  currentVideo: Video;
-
-  constructor(private _videos: VideosService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.getVideos();
     this.getCurrentYear();
   }
 
   getCurrentYear(): void {
-    const year: number = new Date().getFullYear();
-    this.currentYear = year;
+    this.currentYear = new Date().getFullYear();
   }
 
-  filterVideos() {
-    const filteredVideos = [];
-    this.videos.forEach(video => {
-      if (video.snippet.title.indexOf('Quarter') === -1) {
-        filteredVideos.push(video);
-      }
-    });
 
-    this.videos = filteredVideos;
-  }
-
-  getVideos() {
-    this._videos.getVideos().subscribe(
-      res => {
-        this.videos = res.items;
-        this.filterVideos();
-      },
-      err => console.log(err)
-    );
-  }
-
-  playVideo(video: Video) {
-    this.currentVideo = video;
-  }
 }

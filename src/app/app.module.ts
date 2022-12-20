@@ -7,11 +7,35 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import * as fromContainers from "./containers";
 import * as fromComponents from "./components";
-import { AppComponent } from "./containers";
+import { AppComponent, HomeComponent } from './containers';
+import { RouterModule, Routes } from '@angular/router';
+import { PrivacyComponent, TermsOfServiceComponent } from './components';
+
+const routes = [
+  {
+    path: '',
+    component: HomeComponent
+  },
+  {
+    path: 'privacy-policy',
+    component: PrivacyComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'terms-of-service',
+    component: TermsOfServiceComponent,
+    pathMatch: 'full',
+  },
+] as Routes;
 
 @NgModule({
   declarations: [...fromContainers.containers, ...fromComponents.components],
-  imports: [BrowserModule, HttpClientModule, NgbModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    NgbModule,
+    RouterModule.forRoot(routes)
+  ],
   providers: [VideosService],
   bootstrap: [AppComponent]
 })
