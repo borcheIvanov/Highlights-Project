@@ -3,7 +3,6 @@ import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 
 import { VideosService } from "./services/videos.service";
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import * as fromContainers from "./containers";
 import * as fromComponents from "./components";
@@ -33,7 +32,6 @@ const routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    NgbModule,
     RouterModule.forRoot(routes)
   ],
   providers: [VideosService],
