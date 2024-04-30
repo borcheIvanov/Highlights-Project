@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "HighlightsProj:build"
+            "buildTarget": "HighlightsProj:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "HighlightsProj:build:production"
+              "buildTarget": "HighlightsProj:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "HighlightsProj:build"
+            "buildTarget": "HighlightsProj:build"
           }
         },
         "test": {
