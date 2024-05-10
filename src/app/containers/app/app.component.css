@@ -5,3 +5,14 @@ body {
 img {
   cursor: pointer;
 }
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.footer {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,16 +1,15 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div class="header text-center">
-  <h1>
+<div class="header">
+  <h1 style="margin: 0.5rem">
     NBA Highlights
   </h1>
 </div>
 
 <router-outlet></router-outlet>
 
-<div class="py-3 row">
-  <div class="pl-4 col-sm-8">
+<div class="footer">
+  <div>
     <a style="display: block" routerLink="terms-of-service">Terms of service</a>
     <a  style="display: block" routerLink="privacy-policy">Privacy Policy</a>
   </div>
-  <div style="text-align: right" class="col-sm-3">{{ currentYear }} - v1.1.0</div>
+  <div>{{ currentYear }} - v1.1.0</div>
 </div>
