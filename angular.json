@@ -24,12 +24,9 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -66,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "HighlightsProj:build"
+            "buildTarget": "HighlightsProj:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "HighlightsProj:build:production"
+              "buildTarget": "HighlightsProj:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "HighlightsProj:build"
+            "buildTarget": "HighlightsProj:build"
           }
         },
         "test": {
