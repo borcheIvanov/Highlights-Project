@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Video } from 'src/app/models/video.interface';
-import {YouTubeData} from '../../models/youtube-data.interface';
+import { YouTubeData } from '../../models/youtube-data.interface';
 
 @Component({
   selector: 'app-playlist',

@@ -6,7 +6,7 @@ import { VideosService } from "./services/videos.service";
 
 import * as containers from "./containers";
 import * as components from "./components";
-import {RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes = [
   {

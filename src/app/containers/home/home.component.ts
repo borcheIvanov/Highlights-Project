@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Video } from '../../models/video.interface';
 import { VideosService } from '../../services/videos.service';
-import {YouTubeData} from '../../models/youtube-data.interface';
+import { YouTubeData } from '../../models/youtube-data.interface';
 
 @Component({
   selector: 'app-home',
@@ -17,8 +17,7 @@ export class HomeComponent implements OnInit {
   constructor(private _videos: VideosService) {}
 
   ngOnInit() {
-    this.getVideos()
-
+    this.getVideos();
   }
 
   filterVideos() {
@@ -43,7 +42,7 @@ export class HomeComponent implements OnInit {
   }
 
   playVideo(video: Video) {
-    this.currentVideo = video
+    this.currentVideo = video;
   }
 
 }

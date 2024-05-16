@@ -31,12 +31,10 @@
             "style": "kebab-case"
           }
         ],
-        "space-in-parens": "warn",
-        "semi-spacing": "warn",
-        "brace-style": "error",
         "curly": "error",
-        "key-spacing": "warn",
-        "linebreak-style": "warn"
+        "semi": "error",
+        "space-in-parens": "error",
+        "object-curly-spacing": ["warn", "always"]
       }
     },
     {
