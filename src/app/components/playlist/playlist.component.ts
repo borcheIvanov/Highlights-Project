@@ -1,13 +1,14 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Video } from 'src/app/models/video.interface';
+import { YouTubeData } from '../../models/youtube-data.interface';
 
 @Component({
   selector: 'app-playlist',
   templateUrl: './playlist.component.html',
   styleUrls: ['./playlist.component.css']
 })
-export class PlaylistComponent implements OnInit {
-  @Input() videos: any;
+export class PlaylistComponent  {
+  @Input() videos: YouTubeData[];
   @Output() videoPlaying = new EventEmitter<Video>();
 
   title = 'NBA Where amazing happens';
@@ -16,8 +17,6 @@ export class PlaylistComponent implements OnInit {
   videoIndex = -1;
 
   constructor() {}
-
-  ngOnInit() {}
 
   playNext() {
     this.videoIndex++;

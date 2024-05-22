@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Video } from '../../models/video.interface';
 import { VideosService } from '../../services/videos.service';
+import { YouTubeData } from '../../models/youtube-data.interface';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import { VideosService } from '../../services/videos.service';
 })
 export class HomeComponent implements OnInit {
 
-  videos: any = [];
+  videos: YouTubeData[] = [];
 
   currentVideo: Video;
 
