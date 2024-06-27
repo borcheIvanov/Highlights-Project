@@ -1,13 +1,38 @@
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-import { AppModule } from './app/app.module';
+import { enableProdMode, provideExperimentalZonelessChangeDetection } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
 import { environment } from './environments/environment';
+import { AppComponent } from './app/containers';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideRouter, Routes } from '@angular/router';
+import * as containers from './app/containers';
+import * as components from './app/components';
+
+const routes = [
+  {
+    path: '',
+    component: containers.HomeComponent
+  },
+  {
+    path: 'privacy-policy',
+    component: components.PrivacyComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'terms-of-service',
+    component: components.TermsOfServiceComponent,
+    pathMatch: 'full',
+  },
+] as Routes;
 
 if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideExperimentalZonelessChangeDetection(),
+    provideHttpClient(withInterceptorsFromDi()),
+    provideRouter(routes)]
+});
+
 
