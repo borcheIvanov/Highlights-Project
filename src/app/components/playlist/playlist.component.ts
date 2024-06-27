@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Video } from 'src/app/models/video.interface';
 import { YouTubeData } from '../../models/youtube-data.interface';
 import { CommonModule } from '@angular/common';

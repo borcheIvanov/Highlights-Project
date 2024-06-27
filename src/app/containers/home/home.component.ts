@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Video } from '../../models/video.interface';
 import { VideosService } from '../../services/videos.service';
 import { YouTubeData } from '../../models/youtube-data.interface';
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
 
   currentVideo: Video;
 
-  constructor(private _videos: VideosService) {}
+  constructor(private _videos: VideosService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.getVideos();
@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit {
     });
 
     this.videos = filteredVideos;
+    this.cdr.markForCheck();
   }
 
   getVideos() {
