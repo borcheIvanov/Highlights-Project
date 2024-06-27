@@ -1,11 +1,16 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Video } from 'src/app/models/video.interface';
 import { YouTubeData } from '../../models/youtube-data.interface';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-playlist',
+  standalone: true,
   templateUrl: './playlist.component.html',
-  styleUrls: ['./playlist.component.css']
+  styleUrls: ['./playlist.component.css'],
+  imports: [
+    CommonModule
+  ]
 })
 export class PlaylistComponent  {
   @Input() videos: YouTubeData[];

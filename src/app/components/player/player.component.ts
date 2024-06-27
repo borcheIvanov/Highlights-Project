@@ -4,6 +4,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-player',
+  standalone: true,
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.css']
 })

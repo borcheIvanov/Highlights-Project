@@ -2,11 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { Video } from '../../models/video.interface';
 import { VideosService } from '../../services/videos.service';
 import { YouTubeData } from '../../models/youtube-data.interface';
+import { PlayerComponent, PlaylistComponent } from '../../components';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  imports: [
+    PlayerComponent,
+    PlaylistComponent
+  ],
+  providers: [
+    VideosService
+  ]
 })
 export class HomeComponent implements OnInit {
 
