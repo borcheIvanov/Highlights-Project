@@ -44,7 +44,7 @@ jobs:
 
     - name: npm install, build
       run: |
-        npm install
+        npm install --legacy-peer-deps
         npm run build:production --if-present
 
     - name: Upload artifact for deployment job
@@ -54,6 +54,7 @@ jobs:
         path: ./dist/HighlightsProj/browser
 
   deploy:
+    if: github.ref == 'refs/heads/master'
     permissions:
       contents: none
     runs-on: ubuntu-latest
