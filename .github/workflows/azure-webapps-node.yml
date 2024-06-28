@@ -17,10 +17,7 @@
 # For more information on the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # For more samples to get started with GitHub Action workflows to deploy to Azure: https://github.com/Azure/actions-workflow-samples
 
-on:
-  push:
-    branches: [ "master" ]
-  workflow_dispatch:
+on: [push]
 
 env:
   AZURE_WEBAPP_NAME: nbahighlights    # set this to your application's name
@@ -44,7 +41,7 @@ jobs:
 
     - name: npm install, build
       run: |
-        npm install
+        npm install --legacy-peer-deps
         npm run build:production --if-present
 
     - name: Upload artifact for deployment job
@@ -54,6 +51,7 @@ jobs:
         path: ./dist/HighlightsProj/browser
 
   deploy:
+    if: github.ref == 'refs/heads/master'
     permissions:
       contents: none
     runs-on: ubuntu-latest
