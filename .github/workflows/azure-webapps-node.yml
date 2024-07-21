@@ -44,11 +44,13 @@ jobs:
         npm install --legacy-peer-deps
         npm run build:production --if-present
 
-    - name: update config
+    - name: log
       run: |
         echo 'updating json'
         echo $github.BUILD_NUMBER;
         ls
+
+    - name: update config
       uses: RadovanPelka/github-action-json@main
       with:
         path: "./dist/HighlightsProj/browser/assets/config.json"
