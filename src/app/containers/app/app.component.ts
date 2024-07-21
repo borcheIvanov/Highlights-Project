@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ConfigurationService } from '../../services/configuration.service';
 
 
 @Component({
@@ -16,11 +17,13 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent implements OnInit {
   currentYear: number;
+  version: string;
 
-  constructor() {}
+  constructor(private configurationService: ConfigurationService) {}
 
   ngOnInit() {
     this.getCurrentYear();
+    this.version = this.configurationService.version;
   }
 
   getCurrentYear(): void {

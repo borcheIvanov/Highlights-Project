@@ -44,6 +44,15 @@ jobs:
         npm install --legacy-peer-deps
         npm run build:production --if-present
 
+    - name: edit config
+      env:
+        YTKey: ${{ secrets.YOUTUBE_KEY }}
+      run: |
+        echo "{\"version\": \"v1.2.$GITHUB_RUN_NUMBER\", \"youTubeKey\": \"$YTKey\"}" > ./dist/HighlightsProj/browser/assets/config.json
+
+    - name: more
+      run: more ./dist/HighlightsProj/browser/assets/config.json
+
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
       with:

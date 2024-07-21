@@ -6,6 +6,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { provideRouter, Routes } from '@angular/router';
 import * as containers from './app/containers';
 import * as components from './app/components';
+import { provideAppInitializer } from './app-initializer';
 
 const routes = [
   {
@@ -32,7 +33,9 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideExperimentalZonelessChangeDetection(),
     provideHttpClient(withInterceptorsFromDi()),
-    provideRouter(routes)]
+    provideRouter(routes),
+    [provideAppInitializer()]
+  ]
 });
 
 
