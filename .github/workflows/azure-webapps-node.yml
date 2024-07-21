@@ -47,8 +47,8 @@ jobs:
     - name: log
       run: |
         echo 'updating json'
-        echo $github.BUILD_NUMBER;
-        ls
+        echo ${{ github.BUILD_NUMBER }}
+        echo ${{ BUILD_NUMBER }}
 
     - name: update config
       uses: RadovanPelka/github-action-json@main
