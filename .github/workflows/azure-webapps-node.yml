@@ -56,7 +56,7 @@ jobs:
         path: "./dist/HighlightsProj/browser/assets/config.json"
         replaceWith: |
           {
-            "version": ${{ github.BUILD_NUMBER }},
+            "version": ${{ BUILD_NUMBER }},
             "youTubeKey: "ytk"
           }
 
