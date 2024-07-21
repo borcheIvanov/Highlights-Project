@@ -47,7 +47,7 @@ jobs:
     - name: log
       run: |
         echo 'updating json'
-        echo ${{ github.BUILD_NUMBER }}
+        echo $GITHUB_RUN_NUMBER
 
     - name: update config
       uses: RadovanPelka/github-action-json@main
@@ -55,7 +55,7 @@ jobs:
         path: "./dist/HighlightsProj/browser/assets/config.json"
         replaceWith: |
           {
-            "version": ${{ github.BUILD_NUMBER }},
+            "version": $GITHUB_RUN_NUMBER,
             "youTubeKey: "ytk"
           }
 
