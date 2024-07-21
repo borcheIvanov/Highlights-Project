@@ -44,6 +44,20 @@ jobs:
         npm install --legacy-peer-deps
         npm run build:production --if-present
 
+    - name: update config
+      run: |
+        echo 'updating json'
+        echo $github.BUILD_NUMBER;
+        ls
+      uses: RadovanPelka/github-action-json@main
+      with:
+        path: "./dist/HighlightsProj/browser/assets/config.json"
+        replaceWith: |
+          {
+            "version": ${{ github.BUILD_NUMBER }},
+            "youTubeKey: "ytk"
+          }
+
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
       with:
