@@ -49,15 +49,21 @@ jobs:
         echo 'updating json'
         echo "v1.2.$GITHUB_RUN_NUMBER"
 
-    - name: update config
-      uses: RadovanPelka/github-action-json@main
+    - name: edit version
+      id: edit-version
+      uses: 898anil/github-actions-json-edit
       with:
-        path: "./dist/HighlightsProj/browser/assets/config.json"
-        replaceWith: |
-          {
-            "version": "v1.2.$GITHUB_RUN_NUMBER",
-            "youTubeKey: "ytk"
-          }
+        file_path: "./dist/HighlightsProj/browser/assets/config.json"
+        field_path: "version"
+        field_value: "v1.2.$GITHUB_RUN_NUMBER"
+
+    - name: edit youtube key
+      id: edit-yt-key
+      uses: 898anil/github-actions-json-edit
+      with:
+        file_path: "./dist/HighlightsProj/browser/assets/config.json"
+        field_path: "youTubeKey"
+        field_value: "ytk"
 
     - name: more
       run: more ./dist/HighlightsProj/browser/assets/config.json
