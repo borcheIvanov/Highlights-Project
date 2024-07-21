@@ -44,16 +44,10 @@ jobs:
         npm install --legacy-peer-deps
         npm run build:production --if-present
 
-    - name: log
-      run: |
-        echo 'updating json'
-        echo "v1.2.$GITHUB_RUN_NUMBER"
-
     - name: edit config
       env:
-        YTKey: ${{ github.run_id }}.${{ github.run_number }}.${{ github.run_attempt }}
+        YTKey: ${{ secrets.YOUTUBE_KEY }}
       run: |
-        ls
         echo "{\"version\": \"v1.2.$GITHUB_RUN_NUMBER\", \"youTubeKey\": \"$YTKey\"}" > ./dist/HighlightsProj/browser/assets/config.json
 
     - name: more
