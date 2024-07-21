@@ -49,13 +49,11 @@ jobs:
         echo 'updating json'
         echo "v1.2.$GITHUB_RUN_NUMBER"
 
-    - name: edit version
-      id: edit-version
-      uses: 898anil/github-actions-json-edit
-      with:
-        file_path: /dist/HighlightsProj/browser/assets/config.json
-        field_path: <version>
-        field_value: <version "v1.2.$GITHUB_RUN_NUMBER">
+    - name: edit config
+      env:
+        YTKey: ${{ github.run_id }}.${{ github.run_number }}.${{ github.run_attempt }}
+      run: |
+        echo "{\"version\": \"v1.2.$GITHUB_RUN_NUMBER\", \"youTubeKey\": \"$YTKey\"}" > /dist/HighlightsProj/browser/assets/config.json
 
     - name: more
       run: more ./dist/HighlightsProj/browser/assets/config.json
