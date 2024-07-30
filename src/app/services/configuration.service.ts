@@ -14,7 +14,6 @@ export class ConfigurationService {
   constructor() { }
 
   public loadConfiguration = (config: AppConfig) => {
-    console.log("loading ", config);
     this.configuration = config;
   };
 
