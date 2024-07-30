@@ -60,6 +60,7 @@ jobs:
         path: ./dist/HighlightsProj/browser
 
   deploy:
+    if: github.ref == 'refs/heads/master'
     permissions:
       contents: none
     runs-on: ubuntu-latest
