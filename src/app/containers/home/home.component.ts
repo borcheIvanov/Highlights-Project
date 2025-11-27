@@ -23,12 +23,15 @@ export class HomeComponent implements OnInit {
   videos: YouTubeData[] = [];
   playlists: Playlist[] = [];
   currentVideo: Video;
+  selectedPlaylist: Playlist | null = null;
 
   constructor(private _videos: VideosService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.playlists = this._videos.getList();
-    this.getVideos(this.playlists[0]);
+    if (this.playlists && this.playlists.length) {
+      this.getVideos(this.playlists[0]);
+    }
   }
 
   filterVideos(query: Query) {
@@ -59,6 +62,7 @@ export class HomeComponent implements OnInit {
   }
 
   getVideos(playlist: Playlist) {
+    this.selectedPlaylist = playlist;
     this._videos.getVideos(playlist).subscribe({
       next: (response) => {
         this.videos = response.items;

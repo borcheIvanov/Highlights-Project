@@ -1,7 +1,24 @@
-<div class="title-wrapper" >
-  @for (playlist of playlists; track playlist) {
-  <div (click)="getVideos(playlist)" class="playlist-title">{{ playlist.title }}</div>
-  }
+<div class="home">
+  <div class="sections" role="tablist" aria-label="Sections">
+    @for (playlist of playlists; track playlist) {
+      <button
+        type="button"
+        class="section-chip"
+        [class.active]="selectedPlaylist?.title === playlist.title"
+        (click)="getVideos(playlist)"
+        role="tab"
+        [attr.aria-selected]="selectedPlaylist?.title === playlist.title"
+      >
+        {{ playlist.title }}
+      </button>
+    }
+  </div>
+
+  <div class="player-wrapper">
+    <app-player [video]="currentVideo"></app-player>
+  </div>
+
+  <div class="playlist-wrapper">
+    <app-playlist [videos]="videos" (videoPlaying)="playVideo($event)"></app-playlist>
+  </div>
 </div>
-<app-player [video]="currentVideo"></app-player>
-<app-playlist [videos]="videos" (videoPlaying)="playVideo($event)"></app-playlist>
