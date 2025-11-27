@@ -3,6 +3,7 @@ import { Video } from '../../models/video.interface';
 import { VideosService } from '../../services/videos.service';
 import { YouTubeData } from '../../models/youtube-data.interface';
 import { PlayerComponent, PlaylistComponent } from '../../components';
+import { Playlist, Query } from '../../models/playlist.interface';
 
 @Component({
   selector: 'app-home',
@@ -20,35 +21,51 @@ import { PlayerComponent, PlaylistComponent } from '../../components';
 export class HomeComponent implements OnInit {
 
   videos: YouTubeData[] = [];
-
+  playlists: Playlist[] = [];
   currentVideo: Video;
 
   constructor(private _videos: VideosService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.getVideos();
+    this.playlists = this._videos.getList();
+    this.getVideos(this.playlists[0]);
   }
 
-  filterVideos() {
+  filterVideos(query: Query) {
     const filteredVideos = [];
-    this.videos.forEach(video => {
-      if (video.snippet.title.indexOf('Quarter') === -1) {
-        filteredVideos.push(video);
-      }
-    });
+
+    if(query.includes.length > 0) {
+      query.includes.forEach(item => {
+        this.videos.forEach(video => {
+          if (video.snippet.title.indexOf(item) > -1) {
+            filteredVideos.push(video);
+          }
+        });
+      });
+    }
+
+    if(query.excludes.length > 0) {
+      query.excludes.forEach(item => {
+        this.videos.forEach(video => {
+          if (video.snippet.title.indexOf(item) === -1) {
+            filteredVideos.push(video);
+          }
+        });
+      });
+    }
 
     this.videos = filteredVideos;
     this.cdr.markForCheck();
   }
 
-  getVideos() {
-    this._videos.getVideos().subscribe(
-      res => {
-        this.videos = res.items;
-        this.filterVideos();
+  getVideos(playlist: Playlist) {
+    this._videos.getVideos(playlist).subscribe({
+      next: (response) => {
+        this.videos = response.items;
+        this.filterVideos(playlist.query);
       },
-      err => console.log(err)
-    );
+      error: (err) =>  console.error('error getting videos from youtube: ' + err)
+    });
   }
 
   playVideo(video: Video) {

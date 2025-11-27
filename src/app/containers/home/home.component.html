@@ -1,2 +1,7 @@
+<div class="title-wrapper" >
+  @for (playlist of playlists; track playlist) {
+  <div (click)="getVideos(playlist)" class="playlist-title">{{ playlist.title }}</div>
+  }
+</div>
 <app-player [video]="currentVideo"></app-player>
 <app-playlist [videos]="videos" (videoPlaying)="playVideo($event)"></app-playlist>
