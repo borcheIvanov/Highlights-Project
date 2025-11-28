@@ -1,4 +1,4 @@
-<div class="home">
+<div class="home" [class.no-player]="!currentVideo?.url">
   <div class="sections" role="tablist" aria-label="Sections">
     @for (playlist of playlists; track playlist) {
       <button
@@ -14,9 +14,11 @@
     }
   </div>
 
-  <div class="player-wrapper">
-    <app-player [video]="currentVideo"></app-player>
-  </div>
+  @if (currentVideo?.url) {
+    <div class="player-wrapper">
+      <app-player [video]="currentVideo"></app-player>
+    </div>
+  }
 
   <div class="playlist-wrapper">
     <app-playlist [videos]="videos" (videoPlaying)="playVideo($event)"></app-playlist>

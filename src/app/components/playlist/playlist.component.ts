@@ -16,7 +16,7 @@ export class PlaylistComponent  {
   @Input() videos: YouTubeData[];
   @Output() videoPlaying = new EventEmitter<Video>();
 
-  title = 'NBA Where amazing happens';
+  title = '';
   description = 'Choose a video from the highlight playlist to start watching';
 
   videoIndex = -1;

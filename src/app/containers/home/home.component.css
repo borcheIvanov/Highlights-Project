@@ -8,6 +8,11 @@
   color: var(--text);
 }
 
+/* When no video is selected, collapse to sections + full-width playlist */
+.home.no-player {
+  grid-template-rows: auto 1fr;
+}
+
 /* Section chips at the top */
 .sections {
   display: flex;
@@ -61,4 +66,13 @@
   .sections { grid-area: sections; }
   .player-wrapper { grid-area: player; }
   .playlist-wrapper { grid-area: list; }
+
+  /* On larger screens, if there's no player, let playlist span full width */
+  .home.no-player {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "sections"
+      "list";
+  }
 }
