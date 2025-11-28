@@ -71,7 +71,7 @@ export class VideosService {
     return [
       { title: 'Premier League', channelId: 'UC-SYaiaBb5P-xcNTzcvkqkA', query: { excludes: [], includes: ['PREMIER LEAGUE'] } },
       { title: 'La Liga', channelId: 'UC-SYaiaBb5P-xcNTzcvkqkA', query: { excludes: [], includes: ['LA LIGA'] } },
-      { title: 'Seria A', channelId: 'UC-SYaiaBb5P-xcNTzcvkqkA', query: { excludes: [], includes: ['SERIE A'] } },
+      { title: 'Serie A', channelId: 'UC-SYaiaBb5P-xcNTzcvkqkA', query: { excludes: [], includes: ['SERIE A'] } },
       { title: 'Champions League', channelId: 'UC-SYaiaBb5P-xcNTzcvkqkA', query: { excludes: [], includes: ['UEFA CHAMPIONS LEAGUE'] } }
     ] as Playlist[];
   }

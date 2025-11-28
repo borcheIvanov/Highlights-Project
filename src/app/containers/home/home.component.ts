@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
   filterVideos(query: Query) {
     const filteredVideos = [];
 
-    if(query.includes.length > 0) {
+    if (query.includes.length > 0) {
       query.includes.forEach(item => {
         this.videos.forEach(video => {
           if (video.snippet.title.indexOf(item) > -1) {
@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
       });
     }
 
-    if(query.excludes.length > 0) {
+    if (query.excludes.length > 0) {
       query.excludes.forEach(item => {
         this.videos.forEach(video => {
           if (video.snippet.title.indexOf(item) === -1) {

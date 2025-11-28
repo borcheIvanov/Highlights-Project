@@ -22,7 +22,7 @@
       role="button"
       [attr.aria-current]="i === videoIndex ? 'true' : null"
     >
-      <img class="thumb" [src]="video.snippet.thumbnails.default.url || video.snippet.thumbnails.default.url" alt="Thumbnail" />
+      <img class="thumb" [src]="video.snippet.thumbnails.default.url || 'https://via.placeholder.com/120x90?text=No+Image'" alt="Thumbnail" />
       <div class="meta">
         <div class="video-title">{{ video.snippet.title }}</div>
       </div>
