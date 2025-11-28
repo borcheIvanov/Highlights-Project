@@ -1,0 +1,78 @@
+/* Layout wrapper */
+.home {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 12px;
+  padding: 12px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* When no video is selected, collapse to sections + full-width playlist */
+.home.no-player {
+  grid-template-rows: auto 1fr;
+}
+
+/* Section chips at the top */
+.sections {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.section-chip {
+  white-space: nowrap;
+  border: 1px solid var(--border);
+  background: var(--chip-bg);
+  color: var(--chip-text);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.section-chip.active {
+  background: var(--chip-active-bg);
+  color: var(--chip-active-text);
+  border-color: var(--chip-active-bg);
+}
+
+.section-chip:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.section-chip:hover {
+  background: var(--hover);
+}
+
+.player-wrapper {
+  max-width: 100%;
+}
+
+.playlist-wrapper {
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .home {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "sections sections"
+      "player   list";
+  }
+  .sections { grid-area: sections; }
+  .player-wrapper { grid-area: player; }
+  .playlist-wrapper { grid-area: list; }
+
+  /* On larger screens, if there's no player, let playlist span full width */
+  .home.no-player {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "sections"
+      "list";
+  }
+}

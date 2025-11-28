@@ -1,31 +1,31 @@
-<div class="player-controls">
-  <div class="play-button" (click)="playPrevious()">
-    <i class="fas fa-backward m-auto"></i>
-  </div>
-  <div>
-    <p>
-      <strong>{{ title }}</strong>
-    </p>
-  </div>
-  <div class="play-button" (click)="playNext()">
-    <i class="fas fa-forward m-auto"></i>
-  </div>
-</div>
-<div style="text-align: center">
-  {{ description }}
-</div>
-
-<div class="playlist">
-  @for (video of videos; track video; let i = $index) {
-    <div
-      class="video"
-      [ngClass]="{ playingVideo: i === videoIndex }"
-      (click)="playVideo(video.id.videoId, video.snippet.title, video.snippet.description, i)"
-      >
-      <div>
-        <img [src]="video.snippet.thumbnails.default.url" alt="YouTube.com" width="199" height="130" />
-      </div>
-      <div class="video-title">{{ video.snippet.title }}</div>
+@if (videoIndex >= 0) {
+  <div class="player-controls" aria-label="Playlist controls">
+    <button type="button" class="nav-btn" (click)="playPrevious()" [disabled]="!canPrev" aria-label="Previous video">
+      ‹
+    </button>
+    <div class="now-playing" aria-live="polite">
+      <div class="np-title">{{ title }}</div>
     </div>
+    <button type="button" class="nav-btn" (click)="playNext()" [disabled]="!canNext" aria-label="Next video">
+      ›
+    </button>
+  </div>
+}
+
+<div class="playlist" role="list">
+  @for (video of videos; track video; let i = $index) {
+    <button
+      type="button"
+      class="video"
+      [class.playingVideo]="i === videoIndex"
+      (click)="playVideo(video.id.videoId, video.snippet.title, video.snippet.description, i)"
+      role="button"
+      [attr.aria-current]="i === videoIndex ? 'true' : null"
+    >
+      <img class="thumb" [src]="video.snippet.thumbnails.default.url || 'https://via.placeholder.com/120x90?text=No+Image'" alt="Thumbnail" />
+      <div class="meta">
+        <div class="video-title">{{ video.snippet.title }}</div>
+      </div>
+    </button>
   }
 </div>

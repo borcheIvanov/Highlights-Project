@@ -12,12 +12,12 @@ export class PlayerComponent implements OnInit, OnChanges {
   @Input() video: Video = {
     id: 0,
     url: '',
-    title: 'NBA Where amazing happens',
-    description: 'Choose a video from the highlight playlist to start watching',
+    title: '',
+    description: '',
     index: -1
   };
 
-  url: SafeResourceUrl;
+  url?: SafeResourceUrl;
 
   constructor(public sanitizer: DomSanitizer) {}
 
@@ -32,7 +32,7 @@ export class PlayerComponent implements OnInit, OnChanges {
   }
 
   sanitizeUrl() {
-    const notSanitized = this.video ? this.video.url : 'https://www.youtube.com/embed/y3jVZQuYo8A?autoplay=1';
-    this.url = this.sanitizer.bypassSecurityTrustResourceUrl(notSanitized);
+    const notSanitized = this.video && this.video.url ? this.video.url : '';
+    this.url = notSanitized ? this.sanitizer.bypassSecurityTrustResourceUrl(notSanitized) : undefined;
   }
 }

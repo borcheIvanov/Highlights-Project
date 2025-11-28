@@ -1,13 +1,17 @@
-<div class="responsive-container">
-  <iframe
-    class="responsive-iframe"
-    [src]="url"
-    width="100%"
-    height="auto"
-    frameborder="0"
-    webkitallowfullscreen
-    mozallowfullscreen
-    allowfullscreen
-  >
-  </iframe>
-</div>
+@if (url) {
+  <div class="responsive-container">
+    <iframe
+      class="responsive-iframe"
+      [src]="url"
+      width="100%"
+      height="auto"
+      allowfullscreen
+      title="Video player"
+    >
+    </iframe>
+  </div>
+} @else {
+  <div class="responsive-container" aria-live="polite" aria-label="No video selected">
+    <!-- Empty state keeps aspect ratio; nothing plays by default -->
+  </div>
+}

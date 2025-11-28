@@ -1,18 +1,98 @@
-body {
-  font: caption;
+.app-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-color);
+  border-bottom: 1px solid var(--border);
 }
 
-img {
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.brand-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+}
+
+.brand-name {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+.app-actions {
+  min-width: 24px; /* keeps spacing for future actions */
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
   cursor: pointer;
 }
+.theme-toggle:hover {
+  background: var(--hover);
+}
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
 
-.header {
+/* Layout: make footer stick to bottom when content is short */
+:host {
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1 1 auto;
 }
 
 .footer {
-  padding: 1rem 0;
+  margin-top: auto; /* pushes footer to the bottom */
+  padding: 1rem 12px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Footer links: subtle by default, clearer on hover/focus */
+.footer a {
+  color: var(--muted);
+  text-decoration: none;
+  display: block; /* ensure stacked layout even if inline style removed */
+  padding: 2px 0;
+}
+.footer a:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+.footer a:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
 }

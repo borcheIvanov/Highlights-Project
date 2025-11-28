@@ -48,13 +48,13 @@ jobs:
       env:
         YTKey: ${{ secrets.YOUTUBE_KEY }}
       run: |
-        echo "{\"version\": \"v1.2.$GITHUB_RUN_NUMBER\", \"youTubeKey\": \"$YTKey\"}" > ./dist/HighlightsProj/browser/assets/config.json
+        echo "{\"version\": \"v2.0.$GITHUB_RUN_NUMBER\", \"youTubeKey\": \"$YTKey\"}" > ./dist/HighlightsProj/browser/assets/config.json
 
     - name: more
       run: more ./dist/HighlightsProj/browser/assets/config.json
 
     - name: Upload artifact for deployment job
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: node-app
         path: ./dist/HighlightsProj/browser
@@ -71,7 +71,7 @@ jobs:
 
     steps:
     - name: Download artifact from build job
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: node-app
 

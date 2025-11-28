@@ -16,7 +16,7 @@ export class PlaylistComponent  {
   @Input() videos: YouTubeData[];
   @Output() videoPlaying = new EventEmitter<Video>();
 
-  title = 'NBA Where amazing happens';
+  title = '';
   description = 'Choose a video from the highlight playlist to start watching';
 
   videoIndex = -1;
@@ -24,15 +24,25 @@ export class PlaylistComponent  {
   constructor() {}
 
   playNext() {
-    this.videoIndex++;
-    const nextVideoIndex = this.videoIndex;
+    if (!this.videos || this.videos.length === 0) {
+      return;
+    }
+    const nextVideoIndex = Math.min(this.videoIndex + 1, this.videos.length - 1);
+    if (nextVideoIndex === this.videoIndex) {
+      return;
+    }
     const nextVideo = this.videos[nextVideoIndex];
     this.playVideo(nextVideo.id.videoId, nextVideo.snippet.title, nextVideo.snippet.description, nextVideoIndex);
   }
 
   playPrevious() {
-    this.videoIndex--;
-    const previousVideoIndex = this.videoIndex;
+    if (!this.videos || this.videos.length === 0) {
+      return;
+    }
+    const previousVideoIndex = Math.max(this.videoIndex - 1, 0);
+    if (previousVideoIndex === this.videoIndex) {
+      return;
+    }
     const previousVideo = this.videos[previousVideoIndex];
     this.playVideo(
       previousVideo.id.videoId,
@@ -54,5 +64,13 @@ export class PlaylistComponent  {
       description: desc,
       index: i
     } as Video);
+  }
+
+  get canPrev(): boolean {
+    return this.videoIndex > 0;
+  }
+
+  get canNext(): boolean {
+    return !!this.videos && this.videoIndex >= 0 && this.videoIndex < this.videos.length - 1;
   }
 }

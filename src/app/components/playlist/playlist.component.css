@@ -1,37 +1,92 @@
-.video {
-  width: 200px;
-  border: 1px solid #ccc;
-}
-
-.playingVideo {
-  -webkit-filter: opacity(50%); /* Safari 6.0 - 9.0 */
-  filter: opacity(50%);
-}
-
+/* Controls */
 .player-controls {
-  padding-top: 0.5rem;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
 }
 
-.play-button {
-  display: flex;
+.nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 22px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  font-size: 2rem;
-  background-color: red;
-  border-radius: 7%;
-  color: white;
-  width: 10vw;
+}
+.nav-btn:disabled {
+  opacity: 0.5;
+}
+.nav-btn:hover:not(:disabled) {
+  background: var(--hover);
+}
+.nav-btn:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
+.now-playing {
+  min-width: 0;
+}
+.np-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text);
+}
+
+/* Playlist list - compact */
 .playlist {
-  /* width: auto; */
-  overflow-x: auto;
-  padding: 2px 2px 7px 2px;
-  display: flex;
-  max-width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
 }
 
-.playlist > .video {
-  flex: 1; /*grow*/
+.video {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.video.playingVideo {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 0;
+}
+
+.thumb {
+  width: 96px;
+  height: 54px; /* 16:9 */
+  object-fit: cover;
+  border-radius: 6px;
+  flex: 0 0 auto;
+}
+
+.meta { min-width: 0; }
+
+.video-title {
+  font-size: 13px;
+  line-height: 1.25rem;
+  color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .playlist {
+    grid-template-columns: 1fr; /* one item per row at larger screens, full width */
+  }
 }

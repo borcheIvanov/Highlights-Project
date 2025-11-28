@@ -1,10 +1,28 @@
-<div class="header">
-  <h1 style="margin: 0.5rem">
-    NBA Highlights
-  </h1>
-</div>
+<header class="app-bar" role="banner">
+  <div class="brand">
+    <img class="brand-icon" src="assets/favicon.svg" alt="" aria-hidden="true" />
+    <span class="brand-name">Sports Highlights</span>
+  </div>
+  <!-- Room for future actions (e.g., settings) -->
+  <div class="app-actions">
+    <button
+      type="button"
+      class="theme-toggle"
+      (click)="toggleTheme()"
+      [attr.aria-pressed]="currentTheme === 'dark'"
+      [attr.aria-label]="currentTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+      title="Toggle theme"
+    >
+      <span class="icon" aria-hidden="true">{{ currentTheme === 'dark' ? '☀️' : '🌙' }}</span>
+    </button>
+  </div>
 
-<router-outlet></router-outlet>
+</header>
+
+<main class="content" role="main">
+  <router-outlet></router-outlet>
+
+</main>
 
 <div class="footer">
   <div>
