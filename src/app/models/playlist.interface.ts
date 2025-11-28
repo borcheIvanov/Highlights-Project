@@ -1,6 +1,6 @@
 export interface Playlist {
   title: string,
-  url: string
+  channelId: string
   query: Query
 }
 
