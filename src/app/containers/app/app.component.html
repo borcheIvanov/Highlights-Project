@@ -4,7 +4,18 @@
     <span class="brand-name">Sports Highlights</span>
   </div>
   <!-- Room for future actions (e.g., settings) -->
-  <div class="app-actions"></div>
+  <div class="app-actions">
+    <button
+      type="button"
+      class="theme-toggle"
+      (click)="toggleTheme()"
+      [attr.aria-pressed]="currentTheme === 'dark'"
+      [attr.aria-label]="currentTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+      title="Toggle theme"
+    >
+      <span class="icon" aria-hidden="true">{{ currentTheme === 'dark' ? '☀️' : '🌙' }}</span>
+    </button>
+  </div>
 
 </header>
 

@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  padding: 12px;
+}
+
+.container {
+  padding: 12px;
+}
+
+@media (min-width: 768px) {
+  :host { padding: 16px; }
+  .container { padding: 16px; }
+}

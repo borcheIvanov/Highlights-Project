@@ -7,9 +7,31 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111827">
-  <!-- Modern SVG favicon -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <script>
+    (function() {
+      try {
+        const KEY = 'sh-theme';
+        let theme = sessionStorage.getItem(KEY);
+        if (!theme) {
+          const m = document.cookie.match(/(?:^|; )sh-theme=([^;]+)/);
+          theme = m ? decodeURIComponent(m[1]) : '';
+        }
+        if (!theme) {
+          theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+
+        const meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) {
+          meta.setAttribute('content', theme === 'dark' ? '#0b0f19' : '#f3f4f6');
+        }
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <!-- Fallback to ICO if needed -->
   <link rel="alternate icon" type="image/x-icon" href="favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.svg">
 </head>

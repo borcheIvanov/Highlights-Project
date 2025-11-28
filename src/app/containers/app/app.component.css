@@ -1,16 +1,3 @@
-body {
-  font: caption;
-}
-
-img {
-  cursor: pointer;
-}
-
-.header {
-  display: flex;
-  justify-content: center;
-}
-
 .app-bar {
   position: sticky;
   top: 0;
@@ -20,9 +7,10 @@ img {
   justify-content: space-between;
   gap: 12px;
   padding: 10px 12px;
-  background: #111827;
-  color: #ffffff;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.1);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-color);
+  border-bottom: 1px solid var(--border);
 }
 
 .brand {
@@ -49,6 +37,26 @@ img {
   min-width: 24px; /* keeps spacing for future actions */
 }
 
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+.theme-toggle:hover {
+  background: var(--hover);
+}
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
 /* Layout: make footer stick to bottom when content is short */
 :host {
   min-height: 100vh;
@@ -66,5 +74,25 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Footer links: subtle by default, clearer on hover/focus */
+.footer a {
+  color: var(--muted);
+  text-decoration: none;
+  display: block; /* ensure stacked layout even if inline style removed */
+  padding: 2px 0;
+}
+.footer a:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+.footer a:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
