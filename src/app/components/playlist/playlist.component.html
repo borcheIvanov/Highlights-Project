@@ -4,7 +4,6 @@
   </button>
   <div class="now-playing" aria-live="polite">
     <div class="np-title">{{ title }}</div>
-    <div class="np-desc">{{ description }}</div>
   </div>
   <button type="button" class="nav-btn" (click)="playNext()" [disabled]="!canNext" aria-label="Next video">
     ›
