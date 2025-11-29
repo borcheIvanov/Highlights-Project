@@ -1,4 +1,4 @@
-import { enableProdMode, provideExperimentalZonelessChangeDetection } from '@angular/core';
+import { enableProdMode, provideZonelessChangeDetection } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { environment } from './environments/environment';
 import { AppComponent } from './app/containers';
@@ -31,7 +31,7 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideExperimentalZonelessChangeDetection(),
+    provideZonelessChangeDetection(),
     provideHttpClient(withInterceptorsFromDi()),
     provideRouter(routes),
     [provideAppInitializer()]
