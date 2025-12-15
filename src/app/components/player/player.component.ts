@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, inject } from '@angular/core';
 import { Video } from 'src/app/models/video.interface';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -9,6 +9,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   styleUrls: ['./player.component.css']
 })
 export class PlayerComponent implements OnInit, OnChanges {
+  sanitizer = inject(DomSanitizer);
+
   @Input() video: Video = {
     id: 0,
     url: '',
@@ -18,8 +20,6 @@ export class PlayerComponent implements OnInit, OnChanges {
   };
 
   url?: SafeResourceUrl;
-
-  constructor(public sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     this.sanitizeUrl();

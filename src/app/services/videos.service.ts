@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, EMPTY, defer, map, expand, reduce, of, shareReplay, catchError, tap, finalize } from 'rxjs';
 import { YouTubeData } from '../models/youtube-data.interface';
@@ -7,6 +7,9 @@ import { Playlist } from '../models/playlist.interface';
 
 @Injectable()
 export class VideosService {
+  private http = inject(HttpClient);
+  private configurationService = inject(ConfigurationService);
+
 
   order = 'date';
   maxResults = 50;
@@ -15,7 +18,8 @@ export class VideosService {
   private inFlight = new Map<string, Observable<{ items: YouTubeData[] }>>();
   private timeToLiveInMinutes = 60 * 60 * 1000;
 
-  constructor(private http: HttpClient, private configurationService: ConfigurationService) {
+  constructor() {
+    const configurationService = this.configurationService;
     this.key = configurationService.youTubeKey;
   }
 
@@ -70,7 +74,7 @@ export class VideosService {
   getList(): Playlist[] {
     return [
       { title: 'Premier League', channelId: 'UC-SYaiaBb5P-xcNTzcvkqkA', query: { excludes: [], includes: ['PREMIER LEAGUE'] } },
-      { title: 'La Liga', channelId: 'UC-SYaiaBb5P-xcNTzcvkqkA', query: { excludes: [], includes: ['LA LIGA'] } },
+      { title: 'La Liga', channelId: 'UC-SYaiaBb5P-xcNTzcvkqkA', query: { excludes: [], includes: ['PRIMERA LA LIGA'] } },
       { title: 'Serie A', channelId: 'UC-SYaiaBb5P-xcNTzcvkqkA', query: { excludes: [], includes: ['SERIE A'] } },
       { title: 'Champions League', channelId: 'UC-SYaiaBb5P-xcNTzcvkqkA', query: { excludes: [], includes: ['UEFA CHAMPIONS LEAGUE'] } }
     ] as Playlist[];

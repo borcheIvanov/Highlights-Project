@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ConfigurationService } from '../../services/configuration.service';
@@ -17,11 +17,12 @@ import { ThemeService, ThemeMode } from '../../services/theme.service';
   ]
 })
 export class AppComponent implements OnInit {
+  private configurationService = inject(ConfigurationService);
+  private theme = inject(ThemeService);
+
   currentYear: number;
   version: string;
   currentTheme: ThemeMode = 'light';
-
-  constructor(private configurationService: ConfigurationService, private theme: ThemeService) {}
 
   ngOnInit() {
     this.getCurrentYear();
