@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
       query.includes.forEach(item => {
         this.videos.forEach(video => {
           if (video.snippet.title.indexOf(item) > -1) {
+            video.snippet.title = video.snippet.title.replace(item, "").trim();
             filteredVideos.push(video);
           }
         });
