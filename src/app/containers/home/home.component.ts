@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { Video } from '../../models/video.interface';
 import { VideosService } from '../../services/videos.service';
 import { YouTubeData } from '../../models/youtube-data.interface';
@@ -19,13 +19,14 @@ import { Playlist, Query } from '../../models/playlist.interface';
   ]
 })
 export class HomeComponent implements OnInit {
+  private _videos = inject(VideosService);
+  private cdr = inject(ChangeDetectorRef);
+
 
   videos: YouTubeData[] = [];
   playlists: Playlist[] = [];
   currentVideo: Video;
   selectedPlaylist: Playlist | null = null;
-
-  constructor(private _videos: VideosService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.playlists = this._videos.getList();

@@ -1,17 +1,18 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable, NgZone, inject } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 export type ThemeMode = 'light' | 'dark';
 
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
+  private zone = inject(NgZone);
   private readonly storageKey = 'sh-theme';
   private current: ThemeMode = 'light';
   private media = window.matchMedia('(prefers-color-scheme: dark)');
 
   readonly theme$ = new BehaviorSubject<ThemeMode>(this.getInitialTheme());
 
-  constructor(private zone: NgZone) {
+  constructor() {
     this.applyTheme(this.theme$.value, false);
 
     this.media.addEventListener?.('change', (e) => {
