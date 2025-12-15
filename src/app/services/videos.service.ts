@@ -70,7 +70,7 @@ export class VideosService {
   getList(): Playlist[] {
     return [
       { title: 'Premier League', channelId: 'UC-SYaiaBb5P-xcNTzcvkqkA', query: { excludes: [], includes: ['PREMIER LEAGUE'] } },
-      { title: 'La Liga', channelId: 'UC-SYaiaBb5P-xcNTzcvkqkA', query: { excludes: [], includes: ['LA LIGA'] } },
+      { title: 'La Liga', channelId: 'UC-SYaiaBb5P-xcNTzcvkqkA', query: { excludes: [], includes: ['PRIMERA LA LIGA'] } },
       { title: 'Serie A', channelId: 'UC-SYaiaBb5P-xcNTzcvkqkA', query: { excludes: [], includes: ['SERIE A'] } },
       { title: 'Champions League', channelId: 'UC-SYaiaBb5P-xcNTzcvkqkA', query: { excludes: [], includes: ['UEFA CHAMPIONS LEAGUE'] } }
     ] as Playlist[];
